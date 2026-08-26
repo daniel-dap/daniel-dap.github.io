@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Means of contact</title>
+    <link href="styles.css" rel="stylesheet">
+    <link href="image/favicon.ico" rel="icon">
+</head>
+<body>
+    <div class="main-profiles">
+        <img src="image/main-pfp.png" class="main-pfp">
+        <p class="name">DANIEL</p>
+
+        <div class="icons">
+            <span class="icon-wrapper" data-tooltip="Matrix: @danielskibidi:matrix.org">
+                <img src="image/matrix.png" class="matrix-logo">
+            </span>
+            <span class="icon-wrapper" data-tooltip="Fluxer: danieldap#3813">
+                <img src="image/fluxer.png" class="fluxer-logo">
+            </span>
+            <span class="icon-wrapper" data-tooltip="ProtonMail (Alias): danieldap.defy216@passinbox.com">
+                <img src="image/protonmail.png" class="protonmail-logo">
+            </span>
+            <span class="icon-wrapper" data-tooltip="Osmium: @danieldap">
+                <img src="image/osmium.png" class="osmium-logo">
+            </span>
+            <span class="icon-wrapper" data-tooltip="Discord: daniel_dap">
+                <img src="image/discord.png" class="discord-logo">
+            </span>
+            <span class="icon-wrapper" data-tooltip="Gmail: danieldap.contact@gmail.com">
+                <img src="image/gmail.png" class="gmail-logo">
+            </span>
+        </div>
+    </div>
+
+    <script>
+        (function() {
+            const wrappers = document.querySelectorAll('.icon-wrapper');
+
+            function showToast(message) {
+            const oldToast = document.querySelector('.custom-toast');
+            if (oldToast) oldToast.remove();
+
+            const toast = document.createElement('div');
+            toast.className = 'custom-toast';
+            toast.textContent = message;
+
+            Object.assign(toast.style, {
+                position: 'fixed',
+                bottom: '20px',
+                right: '20px',
+                backgroundColor: '#333',
+                color: '#fff',
+                padding: '12px 24px',
+                borderRadius: '8px',
+                fontSize: '16px',
+                fontFamily: 'sans-serif',
+                boxShadow: '0 4px 12px rgba(0,0,0,0.3)',
+                zIndex: '9999',
+                opacity: '0',
+                transform: 'translateY(20px)',
+                transition: 'opacity 0.3s ease, transform 0.3s ease',
+                pointerEvents: 'none'
+            });
+
+            document.body.appendChild(toast);
+
+            toast.offsetHeight;
+
+            toast.style.opacity = '1';
+            toast.style.transform = 'translateY(0)';
+
+            setTimeout(() => {
+                toast.style.opacity = '0';
+                toast.style.transform = 'translateY(20px)';
+                setTimeout(() => toast.remove(), 300);
+            }, 2500);
+            }
+
+            function copyTextToClipboard(text) {
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                return navigator.clipboard.writeText(text).catch(err => {
+                console.error('Failure to copy via Clipboard API:', err);
+                fallbackCopy(text);
+                });
+            } else {
+                fallbackCopy(text);
+            }
+            }
+
+            function fallbackCopy(text) {
+            const textArea = document.createElement('textarea');
+            textArea.value = text;
+            textArea.style.position = 'fixed';
+            textArea.style.opacity = '0';
+            textArea.style.left = '-9999px';
+            document.body.appendChild(textArea);
+            textArea.select();
+            try {
+                document.execCommand('copy');
+            } catch (err) {
+                console.error('Failure to copy via execCommand:', err);
+            }
+            document.body.removeChild(textArea);
+            }
+
+            wrappers.forEach(wrapper => {
+            wrapper.addEventListener('click', function(e) {
+                const tooltip = this.getAttribute('data-tooltip');
+                if (!tooltip) {
+                console.warn('Element without data-tooltip');
+                return;
+                }
+
+                const cleaned = tooltip.split(': ').slice(1).join(': ');
+
+                copyTextToClipboard(cleaned);
+
+                showToast('Copied text!');
+            });
+            });
+        })();
+    </script>
+</body>
+</html>
