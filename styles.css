@@ -15,11 +15,11 @@ body::before {
     background-color: rgba(10, 10, 10, 0.75);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(10px);
-    border-radius: 10px;
-    padding: 40px;
+    border-radius: 1vw;
+    padding: 2vw;
     display: flex;
-    height: 400px;
-    width: 800px;
+    height: 20vw;
+    width: 40vw;
     position: fixed;
     top: 50%;
     left: 50%;
@@ -30,7 +30,7 @@ body::before {
 }
 
 .main-pfp {
-    width: 150px; height: 150px;
+    width: 8vw; height: 8vw;
     border-radius: 50%;
     display: block;
     margin: 0 auto;
@@ -39,24 +39,24 @@ body::before {
 .name {
     color: white;
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-    font-size: x-large;
+    font-size: 1vw;
 }
 
 .icons {
     display: flex;
-    gap: 20px;
+    gap: 1vw;
     align-items: center;
     /*margin-top: 15px;*/
 }
 
 .icons img {
-    width: 100px;
+    width: 5vw;
     transition: width 0.5s;
 }
 
 .icons img:hover{
     cursor: pointer;
-    width: 102px;
+    width: 5.25vw;
     transition: width 0.5s;
 }
 
@@ -73,9 +73,9 @@ body::before {
     transform: translateX(-50%);
     background-color: rgb(15, 15, 15);
     color: white;
-    padding: 6px 12px;
-    border-radius: 6px;
-    font-size: 14px;
+    padding: 0.5vw 0.75vw;
+    border-radius: 0.5vw;
+    font-size: 0.75vw;
     font-family: sans-serif;
     white-space: nowrap;
     visibility: hidden;
