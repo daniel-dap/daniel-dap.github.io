@@ -7,7 +7,7 @@ body::before {
     position: fixed;
     inset: 0;
     background: url('image/background.webp') center/cover;
-    filter: blur(10px);
+    filter: blur(8px);
     z-index: -1;
 }
 
