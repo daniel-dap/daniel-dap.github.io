@@ -10,6 +10,15 @@
         async src="//gc.zgo.at/count.js"></script>
 </head>
 <body>
+    <div id="gc-notice" style="display: none; position: fixed; bottom: 16px; left: 16px; max-width: 340px; background: #1e1e1e; color: #f5f5f5; padding: 14px 16px; border-radius: 8px; font-family: system-ui, sans-serif; font-size: 13px; line-height: 1.4; box-shadow: 0 4px 12px rgba(0,0,0,0.2); z-index: 9999;">
+        <p style="margin: 0 0 10px 0;">
+            This site uses <a href="https://goatcounter.com" target="_blank" style="color: #65dbff">GoatCounter</a> only for anonymous access counting, without use of cookies or personal data collection.
+        </p>
+        <button id="gc-notice-close" style="background: #ffffff; color: #1e1e1e; border: none; padding: 6px 12px; border-radius: 4px; font-size: 12px; font-weight: 600; cursor: pointer;">
+            Understood
+        </button>
+    </div>
+
     <div class="main-profiles">
         <img src="image/main-pfp.jpg" class="main-pfp">
         <p class="name">DANIEL</p>
@@ -126,6 +135,23 @@
             });
             });
         })();
+    </script>
+        
+    <script>
+    (function() {
+        const notice = document.getElementById('gc-notice');
+        const closeBtn = document.getElementById('gc-notice-close');
+        const storageKey = 'gc_privacy_notice_dismissed';
+
+        if (!localStorage.getItem(storageKey)) {
+        notice.style.display = 'block';
+        }
+
+        closeBtn.addEventListener('click', function() {
+        localStorage.setItem(storageKey, 'true');
+        notice.style.display = 'none';
+        });
+    })();
     </script>
 </body>
 </html>
